@@ -49,13 +49,16 @@ public class CollectionTestSuite {
         List<Integer> evenList = new ArrayList<>();
         List<Integer> oddList = new ArrayList<>();
 
-        for(int i = 1; i <= 10; i++){
-            if(i % 2 == 0){
-                evenList.add(i);
-            } else {
-                oddList.add(i);
-            }
-        }
+        evenList.add(2);
+        evenList.add(4);
+        evenList.add(6);
+        evenList.add(8);
+
+        oddList.add(1);
+        oddList.add(3);
+        oddList.add(5);
+        oddList.add(7);
+        oddList.add(9);
 
         //When
         List<Integer> resultForEven = oddNumbersExterminator.exterminate(evenList);
@@ -63,7 +66,7 @@ public class CollectionTestSuite {
         List<Integer> resultOfOdd = oddNumbersExterminator.exterminate(oddList);
         System.out.println(resultOfOdd + "\n");
         //Then
-        Assert.assertEquals(5, resultForEven.size());
+        Assert.assertEquals(4, resultForEven.size());
         Assert.assertEquals(0, resultOfOdd.size());
     }
 
