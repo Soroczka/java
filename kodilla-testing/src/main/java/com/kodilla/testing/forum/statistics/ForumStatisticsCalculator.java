@@ -1,6 +1,5 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.List;
 
 public class ForumStatisticsCalculator {
 
@@ -29,15 +28,15 @@ public class ForumStatisticsCalculator {
 
     }
 
-    public static double getAveragePostsCountPerUser() {
+    public double getAveragePostsCountPerUser() {
         return averagePostsCountPerUser;
     }
 
-    public static double getAverageCommentsCountPerUser() {
+    public double getAverageCommentsCountPerUser() {
         return averageCommentsCountPerUser;
     }
 
-    public static double getAverageCommentsCountPerPost() {
+    public double getAverageCommentsCountPerPost() {
         return averageCommentsCountPerPost;
     }
 
@@ -53,7 +52,7 @@ public class ForumStatisticsCalculator {
         return usersCount;
     }
 
-    public String ShowStatistics(){
+    public String showStatistics(){
         return getAverageCommentsCountPerPost() + " " + getAverageCommentsCountPerUser() + " " + getAveragePostsCountPerUser();
     }
 

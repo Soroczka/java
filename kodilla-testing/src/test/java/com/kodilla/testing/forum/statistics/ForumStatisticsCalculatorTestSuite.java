@@ -146,4 +146,23 @@ public class ForumStatisticsCalculatorTestSuite {
 
     }
 
+    @Test
+    public void testShowStatistics(){
+
+        //Given
+        List<String> listOfUsers = new ArrayList<>();
+        listOfUsers.add("UserA");
+        when(statisticsMock.commentsCount()).thenReturn(10);
+        when(statisticsMock.postsCount()).thenReturn(20);
+        when(statisticsMock.usersNames()).thenReturn(listOfUsers);
+        ForumStatisticsCalculator calculator = new ForumStatisticsCalculator(statisticsMock);
+        calculator.calculateAdvStatistics(statisticsMock);
+
+        //When
+        String statisticsShown = calculator.showStatistics();
+
+        //Then
+        Assert.assertEquals("0.5 10.0 20.0", statisticsShown);
+    }
+
 }
