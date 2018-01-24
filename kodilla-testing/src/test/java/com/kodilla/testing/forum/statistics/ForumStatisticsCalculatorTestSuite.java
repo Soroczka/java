@@ -22,7 +22,7 @@ public class ForumStatisticsCalculatorTestSuite {
     }
 
     @After
-    public void afeterTests() {
+    public void afterTests() {
         System.out.println("Tests just ended.");
     }
 
