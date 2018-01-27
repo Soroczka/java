@@ -2,8 +2,6 @@ package com.kodilla.testing.library;
 
 import java.util.Objects;
 
-import static java.util.Objects.hash;
-
 public class Book {
 
     String title;

@@ -114,39 +114,39 @@ public class ForumTestSuite {
         Assert.assertFalse(result);
     }
 
-    @Test
-    //weryfikujący czy udało się usunąć wybrany post z klasy.
-
-    public void testRemovePost(){
-        //Given
-        ForumUser forumUser = new ForumUser("Olgutek", "Olga Soroka");
-        ForumPost forumPost = new ForumPost("Hello, " + "This is my first post", "olgutek");
-        forumUser.addPost(forumPost.getAuthor(), forumPost.getPostBody());
-
-        //When
-        boolean result = forumUser.removePost(forumPost);
-
-        //Then
-        Assert.assertFalse(result);
-        Assert.assertEquals(0, forumUser.getPostQuantity());
-    }
-
-    @Test
-    //weryfikujący czy udało się usunąć wybrany komentarz z klasy.
-
-    public void testRemoveComment(){
-        //Given
-        ForumUser forumUser = new ForumUser("Olgutek", "Olga Soroka");
-        ForumPost forumPost = new ForumPost("Hello, " + "This is my first post", "olgutek");
-        ForumComment forumComment = new ForumComment(forumPost, "olgutek", "Thanks");
-        forumUser.addComment(forumPost, forumComment.getAuthor(), forumComment.getCommentBody());
-
-        //When
-        boolean result = forumUser.removeComment(forumComment);
-
-        //Then
-        Assert.assertFalse(result);
-        Assert.assertEquals(0, forumUser.getCommentQuantity());
-    }
+//    @Test
+//    //weryfikujący czy udało się usunąć wybrany post z klasy.
+//
+//    public void testRemovePost(){
+//        //Given
+//        ForumUser forumUser = new ForumUser("Olgutek", "Olga Soroka");
+//        ForumPost forumPost = new ForumPost("Hello, " + "This is my first post", "olgutek");
+//        forumUser.addPost(forumPost.getAuthor(), forumPost.getPostBody());
+//
+//        //When
+//        boolean result = forumUser.removePost(forumPost);
+//
+//        //Then
+//        Assert.assertFalse(result);
+//        Assert.assertEquals(0, forumUser.getPostQuantity());
+//    }
+//
+//    @Test
+//    //weryfikujący czy udało się usunąć wybrany komentarz z klasy.
+//
+//    public void testRemoveComment(){
+//        //Given
+//        ForumUser forumUser = new ForumUser("Olgutek", "Olga Soroka");
+//        ForumPost forumPost = new ForumPost("Hello, " + "This is my first post", "olgutek");
+//        ForumComment forumComment = new ForumComment(forumPost, "olgutek", "Thanks");
+//        forumUser.addComment(forumPost, forumComment.getAuthor(), forumComment.getCommentBody());
+//
+//        //When
+//        boolean result = forumUser.removeComment(forumComment);
+//
+//        //Then
+//        Assert.assertFalse(result);
+//        Assert.assertEquals(0, forumUser.getCommentQuantity());
+//    }
 
 }
