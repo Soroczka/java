@@ -11,6 +11,7 @@ import com.kodilla.stream.lambda.ExpressionExecutor;
 import com.kodilla.stream.lambda.Processor;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -86,7 +87,14 @@ public class StreamMain {
          */
 
         Forum forum = new Forum();
-        Map<Integer, ForumUser> mapOfBooks = forum.getList().stream()
+        forum.addUser(0, "username_0", 20, LocalDate.of(1958, 05, 13), 'M');
+        forum.addUser(1, "username_1", 2, LocalDate.of(1978, 01, 14), 'M');
+        forum.addUser(2, "username_2", 0, LocalDate.of(1990, 07, 18),'F');
+        forum.addUser(3, "username_3", 74, LocalDate.of(1984, 11, 24), 'M');
+        forum.addUser(4, "username_4", 3, LocalDate.of(1999, 12, 2), 'F');
+        forum.addUser(5, "username_5", 17, LocalDate.of(2002, 4, 02), 'M');
+
+        Map<Integer, ForumUser> mapOfBooks = forum.getUserList().stream()
                 .filter(forumUser -> forumUser.getSex() != 'M')
                 .filter(forumUser -> forumUser.getDateOfBirth().getYear() > 1998)
                 .filter(forumUser -> forumUser.getPosts() >= 1)
