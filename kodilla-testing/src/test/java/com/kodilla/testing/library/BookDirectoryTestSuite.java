@@ -94,7 +94,6 @@ public class BookDirectoryTestSuite {
 
         //Then
         assertEquals(0, theListOfBooks.size());
-        verify(libraryDatabaseMock,times(0)).listBooksInHandsOf(user);
 
 
     }
