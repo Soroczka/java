@@ -92,11 +92,12 @@ public class StreamMain {
         forum.addUser(2, "username_2", 0, LocalDate.of(1990, 07, 18),'F');
         forum.addUser(3, "username_3", 74, LocalDate.of(1984, 11, 24), 'M');
         forum.addUser(4, "username_4", 3, LocalDate.of(1999, 12, 2), 'F');
-        forum.addUser(5, "username_5", 17, LocalDate.of(2002, 4, 02), 'M');
+        forum.addUser(5, "username_5", 17, LocalDate.of(2002, 4, 5), 'M');
+        forum.addUser(6, "username_6", 1, LocalDate.of(1997, 2, 2), 'M');
 
         Map<Integer, ForumUser> mapOfBooks = forum.getUserList().stream()
-                .filter(forumUser -> forumUser.getSex() != 'M')
-                .filter(forumUser -> forumUser.getDateOfBirth().getYear() > 1998)
+                .filter(forumUser -> forumUser.getSex() != 'F')
+                .filter(forumUser -> forumUser.getDateOfBirth().plusYears(20).isBefore(LocalDate.now()))
                 .filter(forumUser -> forumUser.getPosts() >= 1)
                 .collect(Collectors.toMap(ForumUser::getIdOfUser, forumUser -> forumUser));
 
