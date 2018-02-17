@@ -75,7 +75,7 @@ public class BookDirectoryTestSuite {
         List<Book> theListOfBooks10 = bookLibrary.listBookWithCondition("An");
 
         //Then
-        assertEquals(0, theListOfBooks10.size()); //spr czy zwracana lista ksiazek jest pusta w sytuacji gdy gramgent tytulu krotszy niz 3 znaki
+        assertEquals(0, theListOfBooks10.size()); //spr czy zwracana lista ksiazek jest pusta w sytuacji gdy framgent tytulu krotszy niz 3 znaki
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
 
@@ -94,7 +94,7 @@ public class BookDirectoryTestSuite {
 
         //Then
         assertEquals(0, theListOfBooks.size());
-
+        verify(libraryDatabaseMock,times(1)).listBooksInHandsOf(user);
 
     }
 
