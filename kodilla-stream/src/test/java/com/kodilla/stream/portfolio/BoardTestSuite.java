@@ -6,7 +6,8 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
 
@@ -96,7 +97,7 @@ public class BoardTestSuite {
         List<Task> tasks = project.getTaskLists().stream()
                 .flatMap(l -> l.getTasks().stream())
                 .filter(t -> t.getAssignedUser().equals(user))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         //Then
         Assert.assertEquals(2, tasks.size());
@@ -105,7 +106,7 @@ public class BoardTestSuite {
     }
 
     @Test
-    public void testAddTaskListFindOutdatedTasks(){
+    public void testAddTaskListFindOutdatedTasks() {
         //Given
         Board project = prepareTestData();
 
@@ -113,15 +114,50 @@ public class BoardTestSuite {
         List<TaskList> undoneTasks = new ArrayList<>();
         undoneTasks.add(new TaskList("To do"));
         undoneTasks.add(new TaskList("In progress"));
-
         List<Task> tasks = project.getTaskLists().stream()
                 .filter(undoneTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
                 .filter(t -> t.getDeadline().isBefore(LocalDate.now()))
-                .collect(Collectors.toList());
+                .collect(toList());
 
         //Then
         Assert.assertEquals(1, tasks.size());
         Assert.assertEquals("HQLs for analysis", tasks.get(0).getTitle());
     }
+
+    @Test
+    public void testAddTaskListFindLongTasks() {
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        long longTasks = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> t.getCreated())
+                .filter(d -> d.compareTo(LocalDate.now().minusDays(10)) <= 0)
+                .count();
+
+        //Then
+        Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask(){
+        //Given
+        Board project = prepareTestData();
+
+        //When
+        List<TaskList> addedTasks = new ArrayList<>();
+        addedTasks.add(new TaskList("In progress"));
+//        long longTasks = project.getTaskLists().stream()
+//                .filter(addedTasks::contains)
+//                .flatMap(taskList -> taskList.getTasks().stream())
+//                .map(t -> t.getCreated())
+//                .filter(localDate -> localDate.)
+    }
+
+
 }

@@ -1,7 +1,5 @@
 package com.kodilla.stream.portfolio;
 
-import java.util.Objects;
-
 public final class User {
     private final String username;
     private final String realName;
@@ -31,7 +29,6 @@ public final class User {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return Objects.equals(username, user.username);
+        return username.equals(user.username);
     }
-
 }
