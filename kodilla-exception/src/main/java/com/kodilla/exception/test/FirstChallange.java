@@ -14,7 +14,7 @@ public class FirstChallange {
 
         } catch (ArithmeticException e){
 
-            System.out.println("Something went wrong.");
+            System.out.println("Something went wrong. " +e);
             return 0;
 
         }
