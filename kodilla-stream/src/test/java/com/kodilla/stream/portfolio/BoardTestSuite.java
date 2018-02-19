@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -152,11 +153,15 @@ public class BoardTestSuite {
         //When
         List<TaskList> addedTasks = new ArrayList<>();
         addedTasks.add(new TaskList("In progress"));
-//        long longTasks = project.getTaskLists().stream()
-//                .filter(addedTasks::contains)
-//                .flatMap(taskList -> taskList.getTasks().stream())
-//                .map(t -> t.getCreated())
-//                .filter(localDate -> localDate.)
+        double doubleTasks = project.getTaskLists().stream()
+                .filter(addedTasks::contains)
+                .flatMap(taskList -> taskList.getTasks().stream())
+                .peek(task -> System.out.println(task))
+                .mapToLong(task -> ChronoUnit.DAYS.between(task.getCreated(), LocalDate.now()))
+                .average().orElse(0);
+
+        //Then
+        Assert.assertEquals(10, doubleTasks, 0.001);
     }
 
 
