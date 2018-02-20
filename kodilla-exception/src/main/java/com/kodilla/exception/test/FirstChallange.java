@@ -4,21 +4,11 @@ public class FirstChallange {
 
     public double divide(double a, double b) throws ArithmeticException {
 
-        try {
-
             if(b == 0){
                 throw new ArithmeticException();
             }
 
             return a/b;
-
-        } catch (ArithmeticException e){
-
-            System.out.println("Something went wrong. " +e);
-            return 0;
-
-        }
-
 
     }
 
@@ -26,9 +16,17 @@ public class FirstChallange {
 
         FirstChallange firstChallange = new FirstChallange();
 
-        double result = firstChallange.divide(3, 0);
+        try{
+            double result = firstChallange.divide(3, 0);
+            System.out.println(result);
 
-        System.out.println(result);
+        } catch (ArithmeticException e) {
+
+            System.out.println("Something went wrong. " + e);
+
+        }
+
     }
+
 
 }
