@@ -4,11 +4,11 @@ public class FirstChallange {
 
     public double divide(double a, double b) throws ArithmeticException {
 
-            if(b == 0){
-                throw new ArithmeticException();
-            }
+        if (b == 0) {
+            throw new ArithmeticException();
+        }
 
-            return a/b;
+        return a / b;
 
     }
 
@@ -16,7 +16,7 @@ public class FirstChallange {
 
         FirstChallange firstChallange = new FirstChallange();
 
-        try{
+        try {
             double result = firstChallange.divide(3, 0);
             System.out.println(result);
 
