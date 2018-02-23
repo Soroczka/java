@@ -28,7 +28,6 @@ public class FlightSearchEngine {
         if (!result) {
             throw new RuntimeException();
         }
-
         return result;
     }
 
@@ -36,10 +35,21 @@ public class FlightSearchEngine {
     public boolean findFlightInternational(Flight flight) {
 
         final List<String> flights = new ArrayList<>();
+
         final String departure = flight.getDepartureAirport();
         final String arrival = flight.getArrivalAirport();
 
         boolean result = false;
+
+        if(flight.getArrivalAirport() != null){
+            result = true;
+        }
+
+        for (Map.Entry<String, List<String>> entry : flightMap.entrySet()) {
+
+
+
+        }
 
         return result;
     }

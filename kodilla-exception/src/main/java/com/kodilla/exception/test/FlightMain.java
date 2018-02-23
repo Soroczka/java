@@ -19,10 +19,10 @@ public class FlightMain {
 
         flightSearchEngine.getFlightMap();
 
-//        try {
-//            flightSearchEngine.findFlight(flight);
-//        } catch (RouteNotFoundException e){
-//            System.out.println("ooops");
-//        }
+        try {
+            flightSearchEngine.findFlight(flight);
+        } catch (RouteNotFoundException e){
+            System.out.println("ooops");
+        }
     }
 }
