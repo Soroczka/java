@@ -18,4 +18,18 @@ public class ArrayOperationsTestSuite {
         Assert.assertEquals(4.25, average, 0.01);
 
     }
+
+    @Test
+    public void testGetAverageWhenArrayIsEmpty(){
+
+        //Given
+        int [] numbers = {};
+
+        //When
+        double average = ArrayOperation.getAvarage(numbers);
+
+        //Then
+        Assert.assertEquals(0, average, 0);
+
+    }
 }
