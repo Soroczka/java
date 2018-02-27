@@ -23,35 +23,36 @@ public class FlightSearchEngine {
 
     public boolean findFlight(Flight flight) throws RouteNotFoundException {
 
-        boolean result = findFlightInternational(flight);
+        boolean result = findFlightInternal(flight);
 
         if (!result) {
-            throw new RuntimeException();
+            throw new RouteNotFoundException("");
         }
         return result;
     }
 
 
-    public boolean findFlightInternational(Flight flight) {
-
-        final List<String> flights = new ArrayList<>();
+    private boolean findFlightInternal(Flight flight) {
 
         final String departure = flight.getDepartureAirport();
         final String arrival = flight.getArrivalAirport();
 
-        boolean result = false;
-
-        if(flight.getArrivalAirport() != null){
-            result = true;
+        if(flightMap.get(departure) == null || flightMap.get(departure).isEmpty()){
+            return false;
         }
 
-        for (Map.Entry<String, List<String>> entry : flightMap.entrySet()) {
-
-
-
+        if(flightMap.get(departure).contains(arrival)){
+            return true;
         }
 
-        return result;
+        for (String f : flightMap.get(departure)) {
+            if(findFlightInternal(new Flight(f, arrival))){
+                return true;
+            }
+        }
+
+        return false;
+
     }
 
 
