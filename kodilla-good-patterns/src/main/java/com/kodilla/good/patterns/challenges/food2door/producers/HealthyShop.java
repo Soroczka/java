@@ -1,4 +1,7 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.producers;
+
+import com.kodilla.good.patterns.challenges.food2door.Producer;
+import com.kodilla.good.patterns.challenges.food2door.Product;
 
 import java.util.List;
 

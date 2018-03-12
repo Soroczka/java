@@ -1,9 +1,7 @@
-package com.kodilla.good.patterns.challenges.food2door;
+package com.kodilla.good.patterns.challenges.food2door.producers;
 
 public interface ProducerProcess {
 
-    Producer producer = null;
-    Product product = null;
     void process();
 
 }
