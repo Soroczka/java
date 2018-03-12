@@ -11,16 +11,19 @@ public final class Board {
         this.doneList = doneList;
     }
 
-    public void getToDoList(){
+    public TaskList getToDoList(){
         System.out.println("ToDoList: " + toDoList.getTasks());
+        return toDoList;
     }
 
-    public void getInProgressList(){
+    public TaskList getInProgressList(){
         System.out.println("InProgressList: " +inProgressList.getTasks());
+        return inProgressList;
     }
 
-    public void getDoneList(){
+    public TaskList getDoneList(){
         System.out.println("DoneList: " + doneList.getTasks());
+        return doneList;
     }
 
     public void addTaskToDoList(String taskName){
