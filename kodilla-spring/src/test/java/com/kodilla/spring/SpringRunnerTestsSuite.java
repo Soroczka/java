@@ -32,7 +32,7 @@ public class SpringRunnerTestsSuite {
 	public void testTriangleLoadedIntoContainer(){
 		//Given
 		ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-		Shape shape = (Shape)context.getBean("circle");
+		Shape shape = (Shape)context.getBean("triangle");
 
 		//When
 		String name = shape.getShapeName();
