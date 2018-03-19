@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class TasksList {
-    final String name;
-    final List<Task> tasks = new ArrayList<>();
+    final private String name;
+    final private List<Task> tasks = new ArrayList<>();
 
     public TasksList(final String name){
         this.name = name;
