@@ -6,23 +6,34 @@ import java.util.stream.Collectors;
 
 public class FlightSearchEngine {
 
-    public static List<Flight> flightFrom (Flight flight, FindFlight findFlight){
-        List<Flight> flights = findFlight.getFlightSet().stream()
-                .filter(f -> f.getDepartureAirport() == flight.getDepartureAirport())
-                .collect(Collectors.toList());
+    private FlightMap flightMap;
 
-        System.out.println(flights);
-        return flights;
+    public FlightSearchEngine(FlightMap flightMap) {
+        this.flightMap = flightMap;
     }
 
-    public static List<Flight> flightTo (Flight flight, FindFlight findFlight){
-        List<Flight> flights = findFlight.getFlightSet().stream()
-                .filter(f -> f.getArrivalAirport() == flight.getArrivalAirport())
+    public List<Flight> flightFrom (String departureAirport){
+        return flightMap.getAvailableFlights().stream()
+                .filter(f -> f.getDepartureAirport().equalsIgnoreCase(departureAirport))
                 .collect(Collectors.toList());
-
-        System.out.println(flights);
-        return flights;
     }
 
+    public List<Flight> flightTo (String arrivalAirport){
+        return flightMap.getAvailableFlights().stream()
+                .filter(f -> f.getArrivalAirport().equalsIgnoreCase(arrivalAirport))
+                .collect(Collectors.toList());
+    }
+
+    public boolean flightToThrough(String to, String through) {
+        List<Flight> flightsToExpectedAirport = flightMap.getAvailableFlights().stream()
+                .filter(f -> f.getArrivalAirport().equalsIgnoreCase(to))
+                .filter(f -> f.getDepartureAirport().equalsIgnoreCase(through))
+                .collect(Collectors.toList());
+
+        if(flightsToExpectedAirport.isEmpty()){
+            return false;
+        }
+        return !flightTo(through).isEmpty();
+    }
 
 }
