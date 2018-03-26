@@ -16,27 +16,18 @@ public final class Bigmac {
         private List<String> ingredients = new ArrayList<>();
 
         public BigmacBuilder roll(String roll) {
-            if (roll.equals("with sesame") || roll.equals("without sesame")) {
                 this.roll = roll;
                 return this;
-            }
-            throw new IllegalStateException("Roll should be \"with sesame\" or \"without sesame\"");
         }
 
         public BigmacBuilder sauce(String sauce) {
-            if (sauce.equals("standard") || sauce.equals("barbecue") || sauce.equals("1000 Islands")) {
                 this.sauce = sauce;
                 return this;
-            }
-            throw new IllegalStateException("Sauce should be \"standard\" or \"barbecue\" or \"1000 Islands\"");
         }
 
         public BigmacBuilder burgers(int burgers) {
-            if (burgers > 0 && burgers <= 3){
                 this.burgers = burgers;
                 return this;
-            }
-            throw new IllegalStateException("You can take from 1 to 3 burgers");
         }
 
         public BigmacBuilder ingredient(String ingredient) {
@@ -45,10 +36,11 @@ public final class Bigmac {
         }
 
         public Bigmac build() {
-            if (roll == null || sauce == null || burgers == 0) {
+            if (roll != null || sauce != null || burgers != 0) {
                 System.out.println("You have to fill all fields to create your BigMac");
+                return new Bigmac(roll, sauce, burgers, ingredients);
             }
-            return new Bigmac(roll, sauce, burgers, ingredients);
+            throw new NullPointerException();
         }
     }
 
