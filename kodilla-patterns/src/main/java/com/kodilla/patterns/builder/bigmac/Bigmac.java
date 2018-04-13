@@ -36,11 +36,10 @@ public final class Bigmac {
         }
 
         public Bigmac build() {
-            if (roll != null || sauce != null || burgers != 0) {
-                System.out.println("You have to fill all fields to create your BigMac");
+            if (roll != null && sauce != null && burgers != 0) {
                 return new Bigmac(roll, sauce, burgers, ingredients);
             }
-            throw new NullPointerException();
+            throw new NullPointerException("You have to fill all fields to create your BigMac");
         }
     }
 

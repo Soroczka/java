@@ -1,7 +1,6 @@
 buildscript {
-	ext.kotlin_version = '1.2.30'
 	ext {
-		springBootVersion = '1.5.9.RELEASE'
+		springBootVersion = '1.5.10.RELEASE'
 	}
 	repositories {
 		mavenCentral()
@@ -23,16 +22,10 @@ repositories {
 	mavenCentral()
 }
 
-
 dependencies {
-	//External dependencies
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.9-rc'
-	compile group: 'javax.persistence', name: 'persistence-api', version: '1.0.2'
-	compile group: 'org.hibernate', name: 'hibernate-core', version: '3.6.3.Final'
-
-	//Test dependencies
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
+	compile('org.springframework.boot:spring-boot-starter-validation')
+	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
-	testCompile('junit:junit:4.12')
-	testCompile('org.mockito:mockito-all:1.10.19')
 }
