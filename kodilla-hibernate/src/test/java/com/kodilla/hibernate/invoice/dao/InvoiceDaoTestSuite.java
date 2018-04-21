@@ -18,7 +18,9 @@ public class InvoiceDaoTestSuite {
 
     @Autowired
     ProductDao productDao;
+    @Autowired
     ItemDao itemDao;
+    @Autowired
     InvoiceDao invoiceDao;
 
     @Test
