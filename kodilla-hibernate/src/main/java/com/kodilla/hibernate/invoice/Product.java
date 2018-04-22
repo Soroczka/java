@@ -22,17 +22,14 @@ public final class Product {
 
     @Id
     @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
 
     @OneToMany (
             targetEntity = Item.class,
-            mappedBy = "items",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY //EAGER only for 1 to 1
+            mappedBy = "product",
+            cascade = CascadeType.ALL
     )
     public List<Item> getItems() {
         return items;

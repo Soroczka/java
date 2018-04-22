@@ -23,17 +23,7 @@ public final class Item {
         this.value = price.multiply(new BigDecimal(quantity));
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ITEM_ID", unique = true)
-    public int getId() {
-        return id;
-    }
-
-    @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
@@ -43,6 +33,14 @@ public final class Item {
     @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
+    }
+
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "ITEM_ID", unique = true)
+    public int getId() {
+        return id;
     }
 
     @Column(name = "PRICE")
