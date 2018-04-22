@@ -5,8 +5,9 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 @NamedNativeQuery(
-        name = "Company.findNameByFirstThreeLetters",
-        query = "SELECT LEFT (NAME, 3) FROM USERS",
+        name = "Company.findNameByFirstThreeChars",
+        query = "SELECT * FROM COMPANIES" +
+                "WHERE LEFT (NAME, 3) = :THREECHARS",
         resultClass = Company.class
 )
 

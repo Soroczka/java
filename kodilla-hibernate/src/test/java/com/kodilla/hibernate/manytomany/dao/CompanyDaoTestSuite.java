@@ -14,6 +14,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    EmployeeDao employeeDao;
 
     @Test
     public void testSaveManyToMany(){
@@ -58,6 +60,38 @@ public class CompanyDaoTestSuite {
         } catch (Exception e){
             //do nothing
         }
+
+    }
+
+    @Test
+    public void testFindNameByThreeChars(){
+        //Given
+        Company softwareMachine = new Company("Software Machine");
+        Company dataMaesters = new Company("Data Maesters");
+        Company greyMatter = new Company("Grey Matter");
+
+        //When
+        companyDao.findNameByFirstThreeChars("Sof");
+        String name = softwareMachine.getName();
+
+        //Then
+        Assert.assertEquals("Software Machine", name);
+
+    }
+
+    @Test
+    public void testFindName(){
+        //Given
+        Employee johnSmith = new Employee("John", "Smith");
+        Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
+        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+
+        //When
+        employeeDao.findByName("Kovalsky");
+        String lastname = lindaKovalsky.getLastname();
+
+        //Then
+        Assert.assertEquals("Kovalsky", lastname);
 
     }
 
