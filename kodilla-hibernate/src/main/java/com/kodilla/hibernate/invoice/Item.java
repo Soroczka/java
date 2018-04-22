@@ -5,13 +5,24 @@ import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "ITEMS")
 public final class Item {
-    private int id;
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private BigDecimal price;
+
     private int quantity;
+
     private BigDecimal value;
+
+    @ManyToOne
+    @JoinColumn
     private Product product;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn
     private Invoice invoice;
 
     public Item() {
@@ -23,37 +34,26 @@ public final class Item {
         this.value = price.multiply(new BigDecimal(quantity));
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "INVOICE_ID")
     public Invoice getInvoice() {
         return invoice;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID")
     public Product getProduct() {
         return product;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ITEM_ID", unique = true)
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
 
-    @Column(name = "QUANTITY")
     public int getQuantity() {
         return quantity;
     }
 
-    @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;
     }
@@ -66,7 +66,7 @@ public final class Item {
         this.product = product;
     }
 
-    private void setId(int id) {
+    private void setId(Long id) {
         this.id = id;
     }
 

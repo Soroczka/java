@@ -26,7 +26,7 @@ public class InvoiceDaoTestSuite {
 
     @Test
     public void testInvoiceDaoSave(){
-//        //Given
+        //Given
         Product mouse = new Product("Mouse");
         Product keyboard = new Product("Keyboard");
         Product monitor = new Product("Monitor");
@@ -59,13 +59,13 @@ public class InvoiceDaoTestSuite {
 
         //When
         invoiceDao.save(invoice1);
-        int invoice1Id = invoice1.getId();
+        Long invoice1Id = invoice1.getId();
         invoiceDao.save(invoice2);
-        int invoice2Id = invoice2.getId();
+        Long invoice2Id = invoice2.getId();
 
         //Then
-        Assert.assertNotEquals(0, invoice1Id);
-        Assert.assertNotEquals(0, invoice2Id);
+        Assert.assertNotNull(null, invoice1Id);
+        Assert.assertNotNull(null, invoice2Id);
 
         //CleanUp
         try{

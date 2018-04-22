@@ -9,6 +9,6 @@ import java.util.List;
 
 @Transactional
 @Repository()
-public interface InvoiceDao extends CrudRepository<Invoice, Integer> {
+public interface InvoiceDao extends CrudRepository<Invoice, Long> {
 
 }

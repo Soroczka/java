@@ -7,10 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "PRODUCTS")
 public final class Product {
-    private int id;
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @NotNull
     private String name;
+
+    @OneToMany (cascade = CascadeType.ALL)
     private List<Item> items = new ArrayList<>();
 
     public Product() {
@@ -20,23 +26,14 @@ public final class Product {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    @OneToMany (
-            targetEntity = Item.class,
-            mappedBy = "product",
-            cascade = CascadeType.ALL
-    )
     public List<Item> getItems() {
         return items;
     }
 
-    @NotNull
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }
@@ -45,7 +42,7 @@ public final class Product {
         this.items = items;
     }
 
-    private void setId(int id) {
+    private void setId(Long id) {
         this.id = id;
     }
 
