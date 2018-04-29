@@ -6,16 +6,18 @@ import java.util.ArrayList;
 import java.util.List;
 @NamedNativeQuery(
         name = "Company.findNameByFirstThreeChars",
-        query = "SELECT * FROM COMPANIES" +
+        query = "SELECT * FROM COMPANY " +
                 "WHERE LEFT (NAME, 3) = :THREECHARS",
         resultClass = Company.class
 )
 
 @Entity
-@Table(name = "COMPANIES")
 public class Company {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
+    @ManyToMany(cascade =  CascadeType.ALL)
     private List<Employee> employees = new ArrayList<>();
 
     public Company() {
@@ -25,20 +27,14 @@ public class Company {
         this.name = name;
     }
 
-    @ManyToMany(cascade =  CascadeType.ALL, mappedBy = "companies")
     public List<Employee> getEmployees() {
         return employees;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "COMPANY_ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @Column(name = "NAME")
     public String getName() {
         return name;
     }

@@ -11,11 +11,19 @@ import java.util.List;
 )
 
 @Entity
-@Table(name = "EMPLOYEES")
 public class Employee {
+    @Id
+    @GeneratedValue
     private int id;
     private String firstname;
     private String lastname;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "JOIN_COMPANY_EMPLOYEE",
+            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "ID")}
+    )
     private List<Company> companies = new ArrayList<>();
 
     public Employee() {
@@ -26,30 +34,19 @@ public class Employee {
         this.lastname = lastname;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "JOIN_COMPANY_EMPLOYEE",
-            joinColumns = {@JoinColumn(name = "EMPLOYEE_ID", referencedColumnName = "EMPLOYEE_ID")},
-            inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")}
-    )
     public List<Company> getCompanies() {
         return companies;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "EMPLOYEE_ID", unique = true)
+
     public int getId() {
         return id;
     }
 
-    @Column(name = "FIRSTNAME")
     public String getFirstname() {
         return firstname;
     }
 
-    @Column(name = "LASTNAME")
     public String getLastname() {
         return lastname;
     }
